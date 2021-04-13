@@ -1,4 +1,4 @@
-const UserInput = require('../src/UserInput.js');
+const UserInput = require('../lib/UserInput.js');
 const Employee = require('../lib/Employee.js');
 const Manager = require('../lib/Manager.js');
 const inquirer = require('inquirer');
@@ -57,6 +57,7 @@ describe('UserInput', () => {
 			inquirer.prompt.mockResolvedValue(responseData);
 			let employee = await userInput.askEmployeeDataQuestions(employeeType);
 			expect(employee instanceof Manager).toBe(true);
+			expect(employee.getId()).toEqual(responseData.id);
 		});
 	});
 
@@ -65,8 +66,8 @@ describe('UserInput', () => {
 			const userInput = new UserInput();
 			const titleData = {title: 'My Awesome Team'};
 			inquirer.prompt.mockResolvedValue(titleData);
-			await userInput.setTitle();
-			const title = userInput.getTitle();
+			const title = await userInput.askForTitle();
+			//const title = userInput.getTitle();
 			expect(title).toEqual(titleData.title);
 		});
 	});	

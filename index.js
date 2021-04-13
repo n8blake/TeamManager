@@ -2,16 +2,25 @@
 //const inquirer = require('inquirer');
 //const fs = require('fs');
 
-const getUserInput = require('./src/getUserInput.js');
-
-const employees = getUserInput();
+const UserInput = require('./lib/UserInput.js');
 
 // This should contain an array of Employee objects.
 const EMPLOYEES = [];
 
-// this needs to be the recursive part
-const askEmployeeQuestions = () => {
-	// return inquirer.prompt(employeeQuestions).then((data) => {
-	// 	return data;
-	// });
+const init = async () => {
+	const userInput = new UserInput();
+	const title = await userInput.askForTitle();
+	
+	let addingEmployees = await userInput.askToAddEmployee();
+	while(addingEmployees){
+		const employeeType = await userInput.askTypeOfEmployee();
+		const employee = await userInput.askEmployeeDataQuestions(employeeType);
+		EMPLOYEES.push(employee);
+		addingEmployees = await userInput.askToAddEmployee();
+	}
+
+	// generate html pages from users
+	console.log(EMPLOYEES);
 }
+
+init();
