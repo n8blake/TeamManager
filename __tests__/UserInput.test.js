@@ -7,18 +7,6 @@ jest.mock('inquirer');
 
 describe('UserInput', () => {
 
-	describe('addEmployee', () => {
-		it('should add an employee to the array of employees', () => {
-			const userInput = new UserInput();
-			const employee = new Employee();
-			userInput.addEmployee(employee);
-			const employees = userInput.getEmployees();
-			expect(Array.isArray(employees)).toBe(true);
-			expect(employees.length).toEqual(1);
-			expect(employees[0] instanceof Employee).toBe(true);
-		});
-	});
-
 	describe('setEmployees', () => {
 		// would you like to add an Employee? (Y/n) 
 				// if yes
@@ -41,7 +29,7 @@ describe('UserInput', () => {
 			const employeeTypeResponseData = {employeeType: 'manager'};
 			inquirer.prompt.mockResolvedValue(employeeTypeResponseData);
 			let employeeType = await userInput.askTypeOfEmployee();
-			console.log(employeeType);
+			//console.log(employeeType);
 			expect(employeeType).toBe(employeeTypeResponseData.employeeType);
 		});
 
