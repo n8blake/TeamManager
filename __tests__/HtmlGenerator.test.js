@@ -107,9 +107,29 @@ describe('HtmlGenerator', () => {
 	});
 
 		it('should save the valid home page html data to the dist folder', () => {
+			let employees = [];
+			let teamName = "My Awesome Team";
+			for(let i = 0; i < 10; i++){
+				let employee;
+				if(i < 2){
+					employee = new Manager();
+					employee.officeNumber = '80186753' + i;
+				} else if(i < 8) {
+					employee = new Engineer();
+					employee.github = 'GitHubUsr_' + i;
+				} else {
+					employee = new Intern();
+					employee.school = "School " + i;
+				}
+				employee.id = i * 1000;
+				employee.name = "Employee " + i;
+				employee.email = 'employee-' + i + '@email.com';
+				employees.push(employee);
+			}
 			fs.writeFile.mockResolvedValue();
 			const generator = new HtmlGenerator();
-			const homePage = generator.createHomePage('team', []);
+			console.log(employees);
+			const homePage = generator.createHomePage(teamName, employees);
 			generator.saveHtmlDocument('home', homePage)
 			expect(fs.writeFile).toHaveBeenCalled();
 		});
