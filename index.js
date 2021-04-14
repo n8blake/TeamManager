@@ -48,10 +48,9 @@ const init = async (ask) => {
 
 
 	// generate html page from users
-	console.log(employees);
 	const generator = new HtmlGenerator();
 	const homePage = generator.createHomePage(title, employees);
 	generator.saveHtmlDocument('home', homePage);
 }
-
+// Set this to false to generate a test page of 10 placeholder team members 
 init(true);
