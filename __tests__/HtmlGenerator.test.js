@@ -38,7 +38,7 @@ describe('HtmlGenerator', () => {
 			const footer = generator.createPageFooter();
 			const html = `
 		<footer>
-			© 2021 <a href="https://n8blake.com">n8blake</a>
+			© 2021 <a href="https://n8blake.com" target="_blank">n8blake</a>
 		</footer>
 	</body>
 </html>`;
