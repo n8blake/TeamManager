@@ -124,7 +124,7 @@ describe('HtmlGenerator', () => {
 			}
 			fs.writeFile.mockResolvedValue();
 			const generator = new HtmlGenerator();
-			console.log(employees);
+			//console.log(employees);
 			const homePage = generator.createHomePage(teamName, employees);
 			generator.saveHtmlDocument('home', homePage)
 			expect(fs.writeFile).toHaveBeenCalled();
