@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/n8blake/TeamManager#readme",
   "devDependencies": {
+    "html-validator": "^5.1.17",
     "jest": "^26.6.3"
   },
   "dependencies": {

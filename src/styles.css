@@ -1,0 +1,15 @@
+footer {
+	position: absolute;
+	bottom: 0pt;
+	margin: 20pt 50pt;
+}
+
+a.card {
+	text-decoration: none;
+	margin: 20pt;
+	width: 200pt;
+}
+
+a.card>div.card-body {
+	color: black;
+}
