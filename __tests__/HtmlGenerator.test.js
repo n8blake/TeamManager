@@ -62,15 +62,50 @@ describe('HtmlGenerator', () => {
 			//const report = htmlvalidate.validateString("...")
 			//const validator = new HtmlValidator();
 			//const report = validator.validateString(card);
-			console.log(validHtml);
+			//console.log(validHtml);
 			validHtml = JSON.parse(validHtml);
 			expect(validHtml.messages.length).toEqual(0);
 		});
 	});
 
 	describe('createHomePage', () => {
-		it('should create a homepage from an array of users', () => {
+		it('should create a valid html page from an array of users', async () => {
+			let employees = [];
+			let teamName = "My Awesome Team";
+			for(let i = 0; i < 10; i++){
+				let employee;
+				if(i < 2){
+					employee = new Manager();
+				} else if(i < 8) {
+					employee = new Engineer();
+				} else {
+					employee = new Intern();
+				}
+				employee.id = i * 1000;
+				employee.name = "Employee " + i;
+				employee.email = 'employee-' + i + '@email.com';
+				employees.push(employee);
+			}
+			const generator = new HtmlGenerator();
+			const homePage = generator.createHomePage(teamName, employees);
+			//console.log(homepage);
+			const options = {
+				data: homePage,
+				isFragment: false
+ 			}
+			let validHtml = await HtmlValidator(options);
+			validHtml = JSON.parse(validHtml);
+			expect(employees.length).toEqual(10);
+			expect(validHtml.messages.length).toEqual(0);
 
+		});
+
+		it('should save the valid home page html data to the dist folder', () => {
+			fs.writeFile.mockResolvedValue();
+			const generator = new HtmlGenerator();
+			const homePage = generator.createHomePage('team', []);
+			generator.saveHtmlDocument('home', homePage)
+			expect(fs.writeFile).toHaveBeenCalled();
 		});
 	});
 
