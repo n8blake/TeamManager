@@ -17,11 +17,15 @@ Clone the repository, then run node index.js
 ## Usage Information
 Run node index.js and answer the questions in the prompt. The output will be a file called home.html in the src folder. 
 
+<img src="screen_recordings/use.gif" >
+
 ## Contribution Guidelines
 If you wish to contribute to this project, open an issue on github
 
 ## Test Instructions
 Tests are done using Jest. Run npm run test to start the test suite.
+
+<img src="screen_recordings/test.gif" >
 
 ## Questions
 Email [hello@n8blake.com](mailto:hello@n8blake.com)
