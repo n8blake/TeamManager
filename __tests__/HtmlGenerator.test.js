@@ -76,10 +76,13 @@ describe('HtmlGenerator', () => {
 				let employee;
 				if(i < 2){
 					employee = new Manager();
+					employee.officeNumber = '80186753' + i;
 				} else if(i < 8) {
 					employee = new Engineer();
+					employee.github = 'GitHubUsr_' + i;
 				} else {
 					employee = new Intern();
+					employee.school = "School " + i;
 				}
 				employee.id = i * 1000;
 				employee.name = "Employee " + i;
@@ -93,12 +96,15 @@ describe('HtmlGenerator', () => {
 				data: homePage,
 				isFragment: false
  			}
-			let validHtml = await HtmlValidator(options);
-			validHtml = JSON.parse(validHtml);
-			expect(employees.length).toEqual(10);
-			expect(validHtml.messages.length).toEqual(0);
+			let htmlErrors = await HtmlValidator(options);
+			htmlErrors = JSON.parse(htmlErrors);
+			if(htmlErrors.messages.length > 0){
+				console.log(htmlErrors.messages);
+			}
 
-		});
+			expect(employees.length).toEqual(10);
+			expect(htmlErrors.messages.length).toEqual(0);
+	});
 
 		it('should save the valid home page html data to the dist folder', () => {
 			fs.writeFile.mockResolvedValue();
