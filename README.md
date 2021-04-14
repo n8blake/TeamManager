@@ -12,10 +12,10 @@
 A node app aimed at building basic web pages displaying information about a team or small work organization.
 
 ## Installation Instructions
-Clone the repository, create a dist directory, then run node index.js
+Clone the repository, then run node index.js
 
 ## Usage Information
-run node index.js after creating a dist directory
+Run node index.js and answer the questions in the prompt. The output will be a file called home.html in the src folder. 
 
 ## Contribution Guidelines
 If you wish to contribute to this project, open an issue on github

@@ -4,12 +4,12 @@ footer {
 	margin: 20pt 50pt;
 }
 
-a.card {
+div.card {
 	text-decoration: none;
 	margin: 20pt;
 	width: 200pt;
 }
 
-a.card>div.card-body {
+div.card>div.card-body {
 	color: black;
 }
