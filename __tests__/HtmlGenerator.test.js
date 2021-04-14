@@ -24,6 +24,7 @@ describe('HtmlGenerator', () => {
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>My Page</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>`;
 
@@ -59,10 +60,6 @@ describe('HtmlGenerator', () => {
 				isFragment: true
  			}
 			let validHtml = await HtmlValidator(options);
-			//const report = htmlvalidate.validateString("...")
-			//const validator = new HtmlValidator();
-			//const report = validator.validateString(card);
-			//console.log(validHtml);
 			validHtml = JSON.parse(validHtml);
 			expect(validHtml.messages.length).toEqual(0);
 		});
@@ -101,12 +98,11 @@ describe('HtmlGenerator', () => {
 			if(htmlErrors.messages.length > 0){
 				console.log(htmlErrors.messages);
 			}
-
 			expect(employees.length).toEqual(10);
 			expect(htmlErrors.messages.length).toEqual(0);
 	});
 
-		it('should save the valid home page html data to the dist folder', () => {
+		it('should save the valid home page html data to the src folder', () => {
 			let employees = [];
 			let teamName = "My Awesome Team";
 			for(let i = 0; i < 10; i++){
